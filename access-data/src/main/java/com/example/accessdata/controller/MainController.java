@@ -2,8 +2,10 @@ package com.example.accessdata.controller;
 
 import com.example.accessdata.dao.UserRepository;
 import com.example.accessdata.mapper.UserMapper;
+import com.example.accessdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -24,6 +26,9 @@ public class MainController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping(path="/get") // Map ONLY POST Requests
     public String getUser () {
         // @ResponseBody means the returned String is the response, not a view name
@@ -32,11 +37,12 @@ public class MainController {
         return userRepository.findById(1).toString();
     }
 
+    @Transactional
     @GetMapping(path="/getByName") // Map ONLY POST Requests
     public String getByName () {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        System.out.println("maincontroller getByName method...."+userMapper.findByName("evins"));
+        System.out.println("maincontroller getByName method...."+userService.findByName("evins"));
         return userMapper.findByName("evins").toString();
     }
 }
