@@ -8,3 +8,6 @@ Spring-cloud-alibaba-2026-7-14：
 Spring-cloud-alibaba-2026-7-15：
 spring-data-mysql、
 spring-data-jpa
+
+Spring-cloud-alibaba-2026-7-16：
+mybatis-spring-boot

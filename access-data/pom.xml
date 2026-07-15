@@ -45,6 +45,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!-- mybatis-spring-boot -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
 
 <!--        <dependency>-->
 <!--            <groupId>junit</groupId>-->
@@ -61,5 +66,24 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <!--   xml文件无法输出编译文件夹的问题 （ XML 文件没有被复制到 classpath   -->
+        <resources>
+            <!-- 复制 src/main/java 下的 XML 映射文件 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <!-- 复制 src/main/resources 下的所有文件（恢复默认行为） -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>   <!-- 包含所有文件 -->
+                </includes>
+            </resource>
+        </resources>
+
     </build>
 </project>
