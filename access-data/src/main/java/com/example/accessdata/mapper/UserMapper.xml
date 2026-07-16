@@ -23,4 +23,21 @@
   <select id="findByName" resultType="User">
     select id, name, email from user where name = #{name}
   </select>
+
+  <insert id="add" useGeneratedKeys="true"
+          keyProperty="id" parameterType="User">
+    insert into user (name,email)
+    values (#{name},#{email})
+  </insert>
+
+<!--  <update id="updateAuthor" parameterType="User">-->
+<!--    update user set-->
+<!--                    password = #{name},-->
+<!--                    email = #{email}-->
+<!--    where id = #{id}-->
+<!--  </update>-->
+
+<!--  <delete id="deleteUser">-->
+<!--    delete from user where id = #{id}-->
+<!--  </delete>-->
 </mapper>

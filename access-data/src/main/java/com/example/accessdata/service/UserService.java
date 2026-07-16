@@ -12,4 +12,6 @@ import com.example.accessdata.domain.User;
 public interface UserService {
 
     public User findByName(String name);
+
+    public int add(User user);
 }

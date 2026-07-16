@@ -1,6 +1,7 @@
 package com.example.accessdata.controller;
 
 import com.example.accessdata.dao.UserRepository;
+import com.example.accessdata.domain.User;
 import com.example.accessdata.mapper.UserMapper;
 import com.example.accessdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,16 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
         System.out.println("maincontroller getByName method...."+userService.findByName("evins"));
         return userMapper.findByName("evins").toString();
+    }
+
+    @Transactional
+    @GetMapping(path="/add") // Map ONLY POST Requests
+    public String add () {
+        System.out.println("maincontroller add method....");
+        User user = new User();
+        user.setName("evins1");
+        user.setEmail("12314.qq.com");
+        int result = userService.add(user);
+        return userMapper.findByName("evins1").toString();
     }
 }
